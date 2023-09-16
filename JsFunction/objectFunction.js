@@ -9,7 +9,7 @@ function startGame()
 
 
 var greet={
-    greeting:function ()
+    greeting:function greet()
     {
         console.log("Into object function!");//this is how we use object function
     }
