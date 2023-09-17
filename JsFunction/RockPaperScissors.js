@@ -5,7 +5,7 @@ const SCISSORS='SCISSORS';
 const game=function () {return prompt(`${ROCK},${PAPER},${SCISSORS}`,'').toUpperCase();}
 
 
-const getComputerChoice=function ()
+const getComputerChoice= ()=>//used arrow function here for our understanding purpose!
 {
 const randomValue=Math.random();
 if(randomValue<0.34) return ROCK;
