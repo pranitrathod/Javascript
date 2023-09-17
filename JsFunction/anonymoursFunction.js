@@ -7,4 +7,15 @@ console.log("This is anonymous function!");//this is how we declare anonymour fu
 
 fun()
 
+try {
+    start();
+     const start=function start() {
+        console.log("Success!");
+    }
 
+
+}
+catch(Exception)
+{
+    console.log("FIALED!!!");
+}
