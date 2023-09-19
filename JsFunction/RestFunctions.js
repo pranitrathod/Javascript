@@ -24,3 +24,5 @@ const subtractUp=function()
 }
 
 console.log("Before REST OPERATOR WE USED arguments = ",subtractUp(1,2,3,4,5,6,7,8));
+
+//DONT USE Magic Arguments,always use REST OPERATOR ...
