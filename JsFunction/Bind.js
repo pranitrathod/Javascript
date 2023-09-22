@@ -13,7 +13,7 @@
 //refer below example to learn more
 
 
-//NOTE:we are using Callback here as well learn just now(if you are reading this in future please refer callBack codebase doc in this directory)
+//NOTE:we are using Callback here as well learn just now(if you are reading this in future please refer callBack codebase doc in this directory
 const msg=(callBack)=>
 {
     callBack();//this is call back function,in this we dont call functio but browser does the job for us
