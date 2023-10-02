@@ -24,9 +24,8 @@ cancleMoviesBtn.addEventListener('click',()=>{
     }
     moviesDetials.value='';
 })
-
 const deleteMovie=(id)=>{
-        let counter=0;
+    let counter=0;
     for (const movieId of moviesArrays ) {
         if(movieId===id)
         {
@@ -37,7 +36,26 @@ const deleteMovie=(id)=>{
     moviesArrays.splice(id,1);
     const ul=document.getElementById('movie-list');
     ul.children[counter].remove();
+    showAlert.classList.toggle('visible');
+}
+const showAlert=document.getElementById('delete-modal');
+const noButtn=()=>{showAlert.classList.toggle('visible');};
 
+
+const deleteMovieHandler=(id)=>{
+
+    showAlert.classList.add('visible');
+    const noButn=showAlert.querySelector('.btn--passive');
+    const yesButn=showAlert.querySelector('.btn--danger');
+
+    noButn.addEventListener('click',()=>{
+        console.log(noButtn);
+noButtn();
+    });
+    yesButn.addEventListener('click',()=>
+    {
+        deleteMovie(id);
+    });
     // if (moviesArrays.length===0)
     // {
     //     defaulCard.style.display='block';
@@ -88,7 +106,7 @@ addMoviesBtn.addEventListener('click',()=>{
         for (const userInputsClear of userInputs) {
             userInputsClear.value='';
         }moviesDetials.value='';
-        renderMoviesOnScreen.addEventListener('click',deleteMovie.bind(null,addMoviesObject.id));
+        renderMoviesOnScreen.addEventListener('click',deleteMovieHandler.bind(null,addMoviesObject.id));
     }
 })
 
