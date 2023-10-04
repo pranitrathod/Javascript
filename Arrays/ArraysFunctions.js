@@ -30,15 +30,20 @@
 //
 // console.log(list.indexOf(name));
 
-const list = [{ age: 3 }, {grade:2},{ name: 'PRANIT' }];
-const searchName = 'PRANIT';
+// const list = [{ age: 3 }, {grade:2},{ name: 'PRANIT' }];
+// const searchName = 'PRANIT';
+//
+// const numList=[1,2,3,4,5,6];
+// const index = list.findIndex(item => item.name === searchName);
+//
+// if (index !== -1) {
+//     console.log(`Found at index ${index}`);
+// } else {
+//     console.log('Not found');
+// }
 
-const numList=[1,2,3,4,5,6];
-const index = list.findIndex(item => item.name === searchName);
+const arr=[1,2,3,4,5,6,7,8];
+const newObj=arr.filter((num,id,arr)=>{return num>6;});console.log(newObj);
 
-if (index !== -1) {
-    console.log(`Found at index ${index}`);
-} else {
-    console.log('Not found');
-}
+
 
