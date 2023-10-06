@@ -90,7 +90,7 @@
 
 //
 // const differentArray=['PRANIT','RATHOD','Mr.','SOFTWARE ENGINEER',24];
-// const [firstName,LastName,...rest]=differentArray;//This is how we do destructing in Javascript on arrays;
+// const [firstName,LastName,...rest]=differentArray;//This is how we do destructuring in Javascript on arrays;
 // console.log(firstName,LastNamerest);
 
 
