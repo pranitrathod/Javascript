@@ -14,14 +14,10 @@ const renderMovies=(counter)=>{const ul=document.getElementById('movie-list');
         movies.forEach((movie)=>{
             for (const Key in movie.info) {
                 console.log(movie);
-                if(Key!=='title')
+                if(Key!=='titl')
                     text+=`${Key} - ${movie.info[Key]}`;
             }
     });
-
-
-
-
         console.log("outside!");
         newCard.textContent=text;
         ul.append(newCard);
