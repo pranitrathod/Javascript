@@ -36,7 +36,7 @@ const newMoviesObject={
         title,
         [extraMovie]:extraValue
     },
-    id:Math.random()
+    id:Math.random(),
 };
 movies.push(newMoviesObject);
 
