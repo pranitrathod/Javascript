@@ -1,33 +1,35 @@
 const addMovies=document.getElementById('add-movie-btn');
-let counter=-1;
 const movies=[];
+const searchButn=document.getElementById('search-btn');
 
-const renderMovies=(counter)=>{const ul=document.getElementById('movie-list');
-
+const renderMovies=(filter='')=>
+{
+    const ul=document.getElementById('movie-list');
     if(movies.length===0)
-    {ul.classList.remove('visible');}
+    {ul.classList.remove('visible');return;}
     else{ul.classList.add('visible')}
-
-        const newCard=document.createElement('li');
-        let  text=movies[counter].info.title + ' ';
-        let count=0;
-        movies.forEach((movie)=>{
-            if(count===counter){
+    ul.innerHTML="";
+    const filterValue=!filter?movies:movies.filter(movie=>movie.info.title.includes(filter));
+        filterValue.forEach((movie)=>{
+            const newCard=document.createElement('li');
+            let text=movie.info.title + '-';
             for (const Key in movie.info) {
                 if(Key!=='title'){
-                    console.log(movie.info);
-                    text+=`${Key} - ${movie.info[Key]}`;}
-            }}count++;
+                    text=text +`${Key} : ${movie.info[Key]}`;}
+            }
+            newCard.textContent=text;
+            ul.append(newCard);
     });
-        newCard.textContent=text;
-        ul.append(newCard);
 }
-
 const addMoviesHandler=()=>{
-    const title=document.getElementById('title').value;
+    let titlei=document.getElementById('title');
+    const extraMoviei=document.getElementById('extra-name');
+    const extraValuei=document.getElementById('extra-value');
 
-    const extraMovie=document.getElementById('extra-name').value;
-    const extraValue=document.getElementById('extra-value').value;
+    let title=titlei.value;
+    let extraMovie=extraMoviei.value;
+    let extraValue=extraValuei.value;
+
     if(title.trim()==='' || extraMovie.trim() ==='' || extraValue=== ''){return;}
 const newMoviesObject={
     info:{
@@ -36,17 +38,21 @@ const newMoviesObject={
     },
     id:Math.random()
 };
-    counter+=1;
 movies.push(newMoviesObject);
-console.log(movies);
-renderMovies(counter);
 
+titlei.value="";
+extraMoviei.value="";
+extraValuei.value="";
 
+renderMovies();
 }
+const searching=()=>
+{
+    const filterValue=document.getElementById('filter-title').value;
+    renderMovies(filterValue);
+}
+searchButn.addEventListener('click',searching);
 addMovies.addEventListener('click',addMoviesHandler);
-
-
-
 
 //IMPORTANT KEYNOTES
 
