@@ -9,3 +9,5 @@ console.log(object2," ",object);
 //2.
 const object3=Object.assign({name:'PRANIT',age:23},object);
 console.log(object3);
+
+

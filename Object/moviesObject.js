@@ -1,7 +1,6 @@
 const addMovies=document.getElementById('add-movie-btn');
 const movies=[];
 const searchButn=document.getElementById('search-btn');
-
 const renderMovies=(filter='')=>
 {
     const ul=document.getElementById('movie-list');
