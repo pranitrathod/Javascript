@@ -10,12 +10,19 @@ const renderMovies=(filter='')=>
     else{ul.classList.add('visible')}
     ul.innerHTML="";
     const filterValue=!filter?movies:movies.filter(movie=>movie.info.title.includes(filter));
-        filterValue.forEach((movie)=>{
+        filterValue.forEach((movie)=> {
             const newCard=document.createElement('li');
-            let text=movie.info.title + '-';
-            for (const Key in movie.info) {
-                if(Key!=='title'){
-                    text=text +`${Key} : ${movie.info[Key]}`;}
+            // let text=movie.info.title + '-';
+            // for (const Key in movie.info) {
+            //     if(Key!=='title'){
+            //         text=text +`${Key} : ${movie.info[Key]}`;}
+            // }
+        //Practicing destructing on Object
+            const {info}=movie;
+            const {title:movieTitle,...otherProps}=info;//So this will get us direct access to title name rather then doing movie.info.title
+            let text=movieTitle + ' - ';
+            for (const Key in otherProps) {
+                text=text+`${Key} : ${info[Key]}`;
             }
             newCard.textContent=text;
             ul.append(newCard);
@@ -32,10 +39,9 @@ const addMoviesHandler=()=>{
 
     if(title.trim()==='' || extraMovie.trim() ==='' || extraValue=== ''){return;}
 const newMoviesObject={
-    info:{
-        title,
-        [extraMovie]:extraValue
-    },
+        info:{
+            title,
+            [extraMovie]:extraValue },
     id:Math.random(),
 };
 movies.push(newMoviesObject);
@@ -56,13 +62,13 @@ addMovies.addEventListener('click',addMoviesHandler);
 
 //IMPORTANT KEYNOTES
 
-// If you want to access objects nested we usually go with dynamica access
+// If you want to access objects nested we usually go with dynamic access
 //for example : if you have a object called
 //newMoves={info:{title,[extra-name]:extraValue},id:Math.random()}
-//and store it into movies.push(newMovies);
+//and store it into array movies.push(newMovies);
 
-//Here you cannot do like this movies.info[extra-name]//because here extra name isnt into block of code its local
-//In order to fullfill this gap we use dynamic object accessing using forIn loop
+//Here you cannot do like these movies.info[extra-name]//because here extra name isnt into block of code its local
+//In order to full-fill this gap we use dynamic object accessing using forIn loop
 // for(const key in movies.info)
 // {
 //     const text=`$[key]:${movies.info[key]}`//this here we will get the key name
