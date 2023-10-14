@@ -6,30 +6,36 @@ class Products
         this.price=price;
     }
 }
+let counter=0;
+
 class AddToCart
 {
+    constructor(prod) {
+        this.prod=prod;
+        console.log(this.prod);
+    }
+
 render(){
-    const body=document.querySelector('body');
     const section=document.createElement('section');
     section.innerHTML=`
     <div>
-    <h1>Added to cart!</h1>
+    <h1>Total ${this.prod.price}</h1>
+    <button>Order Now</button>
     </div>`
-    body.append(section);
+        section.className='cart';
+   return section;
 }
-
-
 }
 class ProductItem{
     constructor(product) {
         this.product=product;
-        console.log(this.product);
+        // console.log(this.product);
     }
 //this is for addCart
 
     render(){
         const li=document.createElement('li');
-        li.classList='product-item';
+        li.className='product-item';
         li.innerHTML=`<div>
         
         <img src="${this.product.img}" alt="${this.product.title}">
@@ -40,7 +46,7 @@ class ProductItem{
 </div>
 </div>`
         const addToCartButn=li.querySelector('button');
-        addToCartButn.addEventListener('click',new AddToCart().render);
+        // addToCartButn.addEventListener('click',new AddToCart().render);
         return li;
     }
 }
@@ -49,16 +55,29 @@ products=[new Products('Pillow','https://images.unsplash.com/photo-1592789705501
     new Products('A Carpet', 'https://upload.wikimedia.org/wikipedia/commons/thumb/7/71/Ardabil_Carpet.jpg/397px-Ardabil_Carpet.jpg', 89.99)
 ]
     render() {
-        const box = document.getElementById('app');
         const ul = document.createElement('ul');
-        ul.classList = 'product-list';
+        ul.className = 'product-list';
         for (const SingleProd of this.products) {
             const productItem = new ProductItem(SingleProd);
+            ul.append(new AddToCart(SingleProd).render());
+
             ul.append(productItem.render());
         }
-        box.append(ul);
+        return ul;
 
     }}
 
-new AllProducts().render();
+
+class Shop
+{
+    render()
+    {
+        const box = document.getElementById('app');
+         // const addedCartList=new AddToCart();
+        const productList=new AllProducts();
+        // box.append(addedCartList.render());
+        box.append(productList.render());
+    }
+}
+new Shop().render();
 
