@@ -8,36 +8,53 @@ class Products
 }
 let counter=0;
 
-class AddToCart
-{
-    constructor(prod) {
-        this.prod=prod;
-        console.log(this.prod);
+class AddToCart{
+item=[];
+sum=0;
+    addProd(prod) {
+        this.item.push(prod);
+        const {name,img,price}=prod;
+        this.sum+=price;
+        console.log(this.sum);
+        this.total.innerHTML=`<h2>Total \$${this.sum}</h2>`;
     }
-
 render(){
     const section=document.createElement('section');
     section.innerHTML=`
-    <div>
-    <h1>Total ${this.prod.price}</h1>
+   
+    <h2>Total \$ ${0}</h2>
     <button>Order Now</button>
-    </div>`
-        section.className='cart';
-   return section;
+    `;
+    section.className='cart';
+    this.total=section.querySelector('h2');
+    return section;
+    const cartEl = document.createElement('section');
+    cartEl.innerHTML = `
+      <h2>Total: \$${0}</h2>
+      <button>Order Now!</button>
+    `;
+    cartEl.className = 'cart';
+    this.totalOutput = cartEl.querySelector('h2');
+    return cartEl;
+
 }
 }
 class ProductItem{
+
     constructor(product) {
-        this.product=product;
-        // console.log(this.product);
+      this.product=product;
     }
+
 //this is for addCart
+    insertItem()
+    {
+        App.addCart(this.product);
+    }
 
     render(){
         const li=document.createElement('li');
         li.className='product-item';
         li.innerHTML=`<div>
-        
         <img src="${this.product.img}" alt="${this.product.title}">
         <div class="product-item__content">
         <h2>${this.product.title}</h2>
@@ -46,7 +63,7 @@ class ProductItem{
 </div>
 </div>`
         const addToCartButn=li.querySelector('button');
-        // addToCartButn.addEventListener('click',new AddToCart().render);
+        addToCartButn.addEventListener('click',this.insertItem.bind(this));
         return li;
     }
 }
@@ -57,27 +74,39 @@ products=[new Products('Pillow','https://images.unsplash.com/photo-1592789705501
     render() {
         const ul = document.createElement('ul');
         ul.className = 'product-list';
+        let app=new App();
         for (const SingleProd of this.products) {
-            const productItem = new ProductItem(SingleProd);
-            ul.append(new AddToCart(SingleProd).render());
-
+            const productItem = new ProductItem(SingleProd,app);
+            // console.log(productItem);
             ul.append(productItem.render());
         }
         return ul;
 
     }}
-
-
 class Shop
-{
-    render()
+{      box = document.getElementById('app');
+     render()
     {
-        const box = document.getElementById('app');
-         // const addedCartList=new AddToCart();
+
+        this.addedCartList=new AddToCart();
+        this.box.append(this.addedCartList.render());
         const productList=new AllProducts();
-        // box.append(addedCartList.render());
-        box.append(productList.render());
+        this.box.append(productList.render());
+
     }
 }
-new Shop().render();
+
+class App{
+     static init()
+    {
+        const shop=new Shop();
+        shop.render();
+        this.addCartList=shop.addedCartList;
+    } static addCart(product)
+    {
+        this.addCartList.addProd(product);
+    }
+}
+
+App.init();
 
