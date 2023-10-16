@@ -84,7 +84,8 @@ products=[new Products('Pillow','https://images.unsplash.com/photo-1592789705501
 
     }}
 class Shop
-{      box = document.getElementById('app');
+{
+    box = document.getElementById('app');
      render()
     {
 
@@ -110,3 +111,20 @@ class App{
 
 App.init();
 
+
+class Component {
+    constructor(props) {
+       this.props=props;
+       console.log('first');
+    }
+
+}
+class demo extends Component{
+    cars='BMW';
+    constructor(props) {
+        super(props);
+    }
+
+}
+
+new demo();
