@@ -119,12 +119,4 @@ class Component {
     }
 
 }
-class demo extends Component{
-    cars='BMW';
-    constructor(props) {
-        super(props);
-    }
 
-}
-
-new demo();
