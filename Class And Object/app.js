@@ -17,7 +17,9 @@ sum=0;
         this.sum+=price;
         console.log(this.sum);
         this.total.innerHTML=`<h2>Total \$${this.sum}</h2>`;
+
     }
+
 render(){
     const section=document.createElement('section');
     section.innerHTML=`
@@ -35,6 +37,8 @@ render(){
     `;
     cartEl.className = 'cart';
     this.totalOutput = cartEl.querySelector('h2');
+    const orderButn=cartEl.document.querySelector('button');
+   // orderButn.addEventListener('click',this.addProd(prod));
     return cartEl;
 
 }
@@ -112,11 +116,4 @@ class App{
 App.init();
 
 
-class Component {
-    constructor(props) {
-       this.props=props;
-       console.log('first');
-    }
-
-}
 
