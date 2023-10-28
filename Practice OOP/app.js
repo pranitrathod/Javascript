@@ -145,6 +145,11 @@ class App {
         finishedProjectsList.setSwitchHandlerFunction(
             activeProjectsList.addProject.bind(activeProjectsList)
         );
+        setTimeout(this.doSomething,2000);
+    }
+    static doSomething()
+    {
+        alert("This is PRANIT RATHOD CTO!");
     }
 }
 App.init();
