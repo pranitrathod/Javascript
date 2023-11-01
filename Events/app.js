@@ -1,12 +1,10 @@
-const btn=document.querySelector('button');
-function msg(e)
-{   console.log(e);
-    alert('DONE!',e);
+const butn=document.querySelector('button');
+function msg()
+{
+    console.log('success!');
 }
-const msg1=msg.bind(this);
-btn.addEventListener('click',msg1);
+const trash=msg.bind(this);
+butn.addEventListener('click',trash);
 setTimeout(()=>{
-    btn.removeEventListener('click',msg1);
-    console.log('over!');
-    },5000);
-
+    butn.removeEventListener('click',trash);
+},5000);
