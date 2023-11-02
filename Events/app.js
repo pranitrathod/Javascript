@@ -1,10 +1,14 @@
-const butn=document.querySelector('button');
-function msg()
-{
-    console.log('success!');
+let curElementNumber = 0;
+
+function scrollHandler() {
+    const distanceToBottom = document.body.getBoundingClientRect().bottom;
+console.log(distanceToBottom);
+    if (distanceToBottom < document.documentElement.clientHeight + 150) {
+        const newDataElement = document.createElement('div');
+        curElementNumber++;
+        newDataElement.innerHTML = `<p>Element ${curElementNumber}</p>`;
+        document.body.append(newDataElement);
+    }
 }
-const trash=msg.bind(this);
-butn.addEventListener('click',trash);
-setTimeout(()=>{
-    butn.removeEventListener('click',trash);
-},5000);
+
+window.addEventListener('scroll', scrollHandler);
