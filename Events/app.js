@@ -21,7 +21,7 @@ ul2.addEventListener('click',e=>{
 //then it will understand its l1-1 input or l1-2 input so on and so forth
 
 //It does work like this div->ul->li thats all for only list or other kinds of stuff
-//It doesnt work for input we have to add a label or other element to get the it
+//It doesnt work for input we have to add a label or other element to get that into actions
 
 
 
