@@ -1,14 +1,22 @@
-let curElementNumber = 0;
 
-function scrollHandler() {
-    const distanceToBottom = document.body.getBoundingClientRect().bottom;
-console.log(distanceToBottom);
-    if (distanceToBottom < document.documentElement.clientHeight + 150) {
-        const newDataElement = document.createElement('div');
-        curElementNumber++;
-        newDataElement.innerHTML = `<p>Element ${curElementNumber}</p>`;
-        document.body.append(newDataElement);
-    }
-}
+const ul=document.getElementById('2');
+const ul2=document.querySelectorAll('input');
+ul.addEventListener('click',e=>{
+    console.log(e);
+    e.target.closest('li').classList.toggle('highlist');
+    // e.target.closest('li').classList.toggle('highlist');
+})
 
-window.addEventListener('scroll', scrollHandler);
+// ul2.addEventListener('click',e=>{
+//     console.log(e);
+//     e.target.closest('li').classList.toggle('checks');
+//     // e.target.closest('li').classList.toggle('highlist');
+// })
+// check.addEventListener('click',e=>{e.target})
+
+
+
+ul2.forEach(e=>{
+  console.log(e);
+})
+
