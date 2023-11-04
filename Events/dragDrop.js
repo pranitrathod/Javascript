@@ -2,8 +2,9 @@ const ul1 = document.getElementById("ul-1");
 const ul2 = document.getElementById("ul-2");
 const doneButton = document.querySelector("button");
 const liArray = document.querySelectorAll("li");
+const itemArray=[];getAllLocalStorageItems();
+
 doneButton.addEventListener('click', () => {
-    const itemArr=[];
     const input = document.querySelector('input').value;
     const liItem = document.createElement("li");
     const button = document.createElement("button");
@@ -13,9 +14,18 @@ doneButton.addEventListener('click', () => {
     // Add the new li element to the liArray.
     const liArrayAsArray = Array.from(liArray);
     liArrayAsArray.push(liItem);
-    localStorage.setItem('userData',input);
+    localStorage.setItem('data',liItem);
     liItem.addEventListener('click',()=>{add(liItem);});
+
 });
+window.addEventListener('load',function (){
+    const savedData = localStorage.getItem("data");
+    const liItem = document.createElement("li");
+    liItem.innerHTML=`<li>${savedData}</li>`
+    ul1.append(liItem);
+});
+
+
 function add(item)
 {
     const butn=item.querySelector('button');
@@ -49,3 +59,14 @@ liArray.forEach(item=>{
             done(item);
     });
 });
+
+
+function getAllLocalStorageItems() {
+
+    for (let i = 0; i < localStorage.length; i++) {
+        const key = localStorage.key(i);
+        const value = localStorage.getItem(key);
+        itemArray[key] = value;
+    }
+    console.log(itemArray);
+}
