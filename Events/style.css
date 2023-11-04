@@ -1,10 +1,10 @@
-.highlist{
-    background-color: red;
-    text-decoration: line-through;
+div{
+    border: 2px solid #000;
 }
-.checks
+h1
 {
-    background-color: red;
-    text-decoration: line-through;
+    text-align: center;
 }
-
+body{
+    background-color:palegoldenrod;
+}
