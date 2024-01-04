@@ -2,17 +2,20 @@ const postList=document.querySelector(".posts");
 const postDesc=document.getElementById("desc");
 const addButn=document.getElementById("add-btn");
 
-function sendHTTP(method,url,data){
-    const promise=new Promise((resolve,reject)=>{
-        const xhr=new XMLHttpRequest();
-        xhr.open(method,url);
-        xhr.onload=function(){
-            const gotData=JSON.parse(xhr.response);
-            resolve(gotData);
-        }
-        xhr.send(JSON.stringify(data));
-    });
-    return promise;
+async function sendHTTP(method,url,data){
+    // const promise=new Promise((resolve,reject)=>{
+    //     const xhr=new XMLHttpRequest();
+    //     xhr.open(method,url);
+    //     xhr.onload=function(){
+    //         const gotData=JSON.parse(xhr.response);
+    //         resolve(gotData);
+    //     }
+    //     xhr.send(JSON.stringify(data));
+    // });
+    // return promise;
+    const res=await fetch(url);
+    const dataa=await res.json();
+    return dataa;
 }
 async function fetchData() {
     const gotData = await sendHTTP('GET', "https://jsonplaceholder.typicode.com/posts");
